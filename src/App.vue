@@ -120,7 +120,7 @@ body, html {
   min-height: 800px;
   max-width: 500px;
   background-color: #cd4d4f;
-  border: 15px double #2c3e50;
+  border: 15px double #e0c181;
 }
 .container:before {
   content: " ";
