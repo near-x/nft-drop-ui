@@ -1,23 +1,23 @@
 <template>
   <div class="container">
-    <h2>{{ title }}</h2>
-    <p class="desc">{{ description }}</p>
+    <img style="width: 80%; margin-bottom: 20px" src="./assets/near.png">
+    <h2 class="txt">{{ title }}</h2>
+    <p class="desc txt">{{ description }}</p>
     <button
-      class="claim-btn btn btn-primary"
+      class="claim-btn btn btn-warning"
       v-if="!claimed"
       v-on:click="claim"
       :disabled="btnDisabled">
       领取
     </button>
     <button
-      class="claim-btn btn btn-primary"
+      class="claim-btn btn btn-success"
       v-if="claimed"
       v-on:click="openWallet"
       :disabled="btnDisabled">
       查看我的NFT
     </button>
     <img class="nft" v-bind:src="this.imageUrl">
-    <p>v0.1.0</p>
   </div>
 </template>
 
@@ -30,8 +30,8 @@ export default {
   name: 'App',
   data () {
     return {
-      title: 'NFT title',
-      description: 'NFT desc',
+      title: 'loading ...',
+      description: '',
       accountId: null,
       network: 'testnet',
       contractName: null,
@@ -103,21 +103,42 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 body, html {
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   height: 100%;
+  background-color: #cd4d4f;
 }
 
 .container {
   margin: auto;
+  padding: 20px;
   width: 100%;
+  min-height: 800px;
   max-width: 500px;
+  background-color: #cd4d4f;
+  border: 15px double #2c3e50;
+}
+.container:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+}
+
+.txt {
+  color: #e0c181;
 }
 
 .nft {
   width: 100%;
+  border-radius: 5px;
 }
 
 .claim-btn {
