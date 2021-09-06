@@ -2,7 +2,7 @@
   <div class="container">
     <h2>{{ title }}</h2>
     <h4>{{ description }}</h4>
-    <img class="nft" src="./assets/testnft.jpg">
+    <img class="nft" v-bind:src="this.imageUrl">
     <button class="claim-btn" v-on:click="claim">Claim</button>
   </div>
 </template>
@@ -22,7 +22,8 @@ export default {
       network: 'testnet',
       contractName: null,
       tokenId: null,
-      privateKey: null
+      privateKey: null,
+      imageUrl: null
     }
   },
   async mounted () {
@@ -32,6 +33,7 @@ export default {
 
     this.title = metadata.title
     this.description = metadata.description
+    this.imageUrl = metadata.media
   },
   methods: {
     parseURL: function () {
