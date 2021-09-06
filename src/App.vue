@@ -2,8 +2,8 @@
   <div class="container">
     <h2>{{ title }}</h2>
     <p>{{ description }}</p>
+    <button class="claim-btn btn btn-primary" v-on:click="claim" :disabled="btnDisabled">领取</button>
     <img class="nft" v-bind:src="this.imageUrl">
-    <button class="claim-btn btn btn-primary" v-on:click="claim">领取</button>
   </div>
 </template>
 
@@ -23,7 +23,8 @@ export default {
       contractName: null,
       tokenId: null,
       privateKey: null,
-      imageUrl: null
+      imageUrl: null,
+      btnDisabled: false
     }
   },
   async mounted () {
@@ -53,15 +54,24 @@ export default {
       this.accountId = params.get('accountId')
     },
     claim: async function () {
-      await claimNFT(
-        this.network,
-        this.contractName,
-        this.tokenId,
-        this.privateKey,
-        this.accountId
-      )
+      this.btnDisabled = true
 
-      window.alert('claimed')
+      try {
+        await claimNFT(
+          this.network,
+          this.contractName,
+          this.tokenId,
+          this.privateKey,
+          this.accountId
+        )
+
+        window.alert('领取成功')
+      } catch (err) {
+        window.alert('领取失败')
+        console.log(err)
+      } finally {
+        this.btnDisabled = false
+      }
     }
   }
 }
@@ -92,7 +102,7 @@ body, html {
 }
 
 .claim-btn {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 0px;
+  margin-bottom: 16px;
 }
 </style>
