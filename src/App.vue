@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <h2>{{ title }}</h2>
-    <h4>{{ description }}</h4>
+    <p>{{ description }}</p>
     <img class="nft" v-bind:src="this.imageUrl">
-    <button class="claim-btn" v-on:click="claim">Claim</button>
+    <button class="claim-btn btn btn-primary" v-on:click="claim">领取</button>
   </div>
 </template>
 
@@ -74,7 +74,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 body, html {
@@ -93,5 +93,6 @@ body, html {
 
 .claim-btn {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 </style>
