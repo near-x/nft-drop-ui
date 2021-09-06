@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
+    <p class="desc">{{ description }}</p>
     <button
       class="claim-btn btn btn-primary"
       v-if="!claimed"
@@ -123,5 +123,9 @@ body, html {
 .claim-btn {
   margin-top: 0px;
   margin-bottom: 16px;
+}
+
+.desc {
+  text-align: justify;
 }
 </style>
