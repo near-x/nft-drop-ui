@@ -2,7 +2,20 @@
   <div class="container">
     <h2>{{ title }}</h2>
     <p>{{ description }}</p>
-    <button class="claim-btn btn btn-primary" v-on:click="claim" :disabled="btnDisabled">领取</button>
+    <button
+      class="claim-btn btn btn-primary"
+      v-if="!claimed"
+      v-on:click="claim"
+      :disabled="btnDisabled">
+      领取
+    </button>
+    <button
+      class="claim-btn btn btn-primary"
+      v-if="claimed"
+      v-on:click="openWallet"
+      :disabled="btnDisabled">
+      查看我的NFT
+    </button>
     <img class="nft" v-bind:src="this.imageUrl">
   </div>
 </template>
@@ -24,7 +37,8 @@ export default {
       tokenId: null,
       privateKey: null,
       imageUrl: null,
-      btnDisabled: false
+      btnDisabled: false,
+      claimed: false
     }
   },
   async mounted () {
@@ -66,12 +80,16 @@ export default {
         )
 
         window.alert('领取成功')
+        this.claimed = true
       } catch (err) {
         window.alert('领取失败')
         console.log(err)
       } finally {
         this.btnDisabled = false
       }
+    },
+    openWallet: function () {
+      window.open('https://wallet.near.org/')
     }
   }
 }
