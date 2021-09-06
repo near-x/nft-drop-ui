@@ -9,7 +9,7 @@
     - token_id: NFT token id
     - private_key: the private key whose corresponding public key was registered in `nft-drop` contract
     - accountId: receiver account id who will receive the NFT
- 
+
 ## Project setup
 ```
 npm install
