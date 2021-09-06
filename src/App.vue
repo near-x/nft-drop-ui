@@ -17,6 +17,7 @@
       查看我的NFT
     </button>
     <img class="nft" v-bind:src="this.imageUrl">
+    <p>v0.1.0</p>
   </div>
 </template>
 
