@@ -10,7 +10,7 @@ export async function claimNFT (network, contract, tokenId, privateKey, receiver
   const rpcEndpoint = network === 'mainnet' ? 'https://rpc.mainnet.near.org' : 'https://rpc.testnet.near.org'
   const rpcProvider = new nearAPI.providers.JsonRpcProvider(rpcEndpoint)
 
-  const dropContract = network === 'mainnet' ? 'aa' : 'nft-drop.testnet'
+  const dropContract = network === 'mainnet' ? 'nft-drop.near' : 'nft-drop.testnet'
   console.log(publicKey.toString())
   const accessKey = await rpcProvider.query(
     `access_key/${dropContract}/${publicKey.toString()}`,
