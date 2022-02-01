@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img style="width: 80%; margin-bottom: 20px" src="./assets/near.png">
+    <img style="width: 80%; margin-bottom: 20px" src="./assets/near-tiger.png">
     <h2 class="txt">{{ title }}</h2>
     <p class="desc txt">{{ description }}</p>
     <button
@@ -110,7 +110,10 @@ body, html {
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   height: 100%;
-  background-color: #cd4d4f;
+  background-image: url("./assets/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 .container {
@@ -119,7 +122,7 @@ body, html {
   width: 100%;
   min-height: 800px;
   max-width: 500px;
-  background-color: #cd4d4f;
+  background-color: #ba1c2c;
   border: 15px double #e0c181;
 }
 .container:before {
